@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
@@ -11,8 +11,8 @@ iptables -A FORWARD -s 10.99.99.0/24 -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK S
 
 cp -f /etc/ppp/pptpd-options.local /etc/ppp/pptpd-options
 cp -f /etc/radiusclient/servers.local /etc/radiusclient/servers
-if [[ $RADIUS_SERVER_ADDRESS ]]; then
-    if [[ -z "${RADIUS_SERVER_PORT}" ]]; then
+if [ $RADIUS_SERVER_ADDRESS ]; then
+    if [ -z "${RADIUS_SERVER_PORT}" ]; then
         RADIUS_SERVER_PORT=1812
         exit -1
     fi
