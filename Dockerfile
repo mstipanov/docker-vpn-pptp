@@ -17,5 +17,4 @@ COPY ./generate_config.sh /generate_config.sh
 RUN chmod +x /generate_config.sh
 RUN cp /etc/radiusclient/servers /etc/radiusclient/servers.local
 
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["pptpd", "--fg"]
+CMD ["/entrypoint.sh"]

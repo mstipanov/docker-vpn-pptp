@@ -23,4 +23,4 @@ if [[ $RADIUS_SERVER_ADDRESS ]]; then
     /generate_config.sh > /etc/radiusclient/radiusclient.conf
 fi
 
-exec "$@"
+exec pptpd --fg
