@@ -17,8 +17,8 @@ if [[ $RADIUS_SERVER_ADDRESS ]]; then
         exit -1
     fi
 
-    echo "plugin radius.so" >> /etc/ppp/pptpd-options.local
-    echo "plugin radattr.so" >> /etc/ppp/pptpd-options.local
+    echo "plugin radius.so" >> /etc/ppp/pptpd-options
+    echo "plugin radattr.so" >> /etc/ppp/pptpd-options
     echo "${RADIUS_SERVER_ADDRESS} ${RADIUS_SERVER_SECRET}" >> /etc/radiusclient/servers
     /generate_config.sh > /etc/radiusclient/radiusclient.conf
 fi
