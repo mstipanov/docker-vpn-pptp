@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y pptpd iptables radiusclient1
 
 COPY ./etc/pptpd.conf /etc/pptpd.conf
-COPY ./etc/ppp/pptpd-options /etc/ppp/pptpd-options
+COPY ./etc/ppp/* /etc/ppp/
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod 0700 /entrypoint.sh
@@ -15,6 +15,7 @@ RUN echo "INCLUDE /etc/radiusclient/dictionary.microsoft" >> /etc/radiusclient/d
 
 COPY ./generate_config.sh /generate_config.sh
 RUN chmod +x /generate_config.sh
+RUN cp /etc/radiusclient/servers /etc/radiusclient/servers.local
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["pptpd", "--fg"]
